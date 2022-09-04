@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../redux/todos/services";
 
 function AddNewTask() {
   const [newTask, setNewTask] = useState("");
+
+  const dispatch = useDispatch();
 
   const inputTaskValueRemove = () => {
     setNewTask("");
@@ -11,6 +15,8 @@ function AddNewTask() {
   const handleNewTask = (e) => {
     e.preventDefault();
     if (newTask === "" || newTask.length < 3) return;
+    dispatch(addTodo(newTask));
+    setNewTask("");
   };
 
   return (

@@ -1,6 +1,14 @@
 import LoginForm from "../components/LoginForm";
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Login() {
+  const user = useSelector((state) => state.auth.user);
+
+  if (user) {
+    return <Navigate to="/" />;
+  }
+
   return (
     <div className="h-screen w-screen flex items-center justify-center bg-zinc-200">
       <div className="w-96 h-[650px] text-center rounded-3xl bg-white bg-opacity-40 shadow-xl backdrop-blur-xl border-2 border-white">

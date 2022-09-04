@@ -24,7 +24,7 @@ function LoginForm() {
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
       />
-      <button className="w-full py-4 mt-10 bg-rose-500 bg-opacity-80 text-white rounded-xl hover:bg-opacity-100">
+      <button className="w-full py-4 mt-7 bg-rose-500 bg-opacity-80 text-white rounded-xl hover:bg-opacity-100">
         Login
       </button>
     </form>
