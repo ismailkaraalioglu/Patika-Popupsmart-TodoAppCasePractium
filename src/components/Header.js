@@ -23,7 +23,7 @@ function Header() {
   };
 
   return (
-    <header className="bg-gray-200 w-full h-16">
+    <header className="w-full h-16 bg-white bg-opacity-40 shadow backdrop-blur-xl border border-white">
       <div className="h-full max-w-7xl mx-auto flex items-center justify-between">
         <div className="font-bold text-xl italic">Popupsmart TodoApp</div>
 

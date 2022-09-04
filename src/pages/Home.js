@@ -3,7 +3,7 @@ import Main from "../components/Main";
 
 function Home() {
   return (
-    <div>
+    <div className="w-screen h-screen bg-zinc-200">
       <Header />
       <Main />
     </div>

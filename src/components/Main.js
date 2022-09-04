@@ -1,9 +1,13 @@
-import React from 'react'
+import AddNewTask from "./AddNewTask";
+import Todos from "./Todos";
 
 function Main() {
   return (
-    <div>Main</div>
-  )
+    <main className="mt-10">
+      <AddNewTask />
+      <Todos />
+    </main>
+  );
 }
 
-export default Main
+export default Main;
