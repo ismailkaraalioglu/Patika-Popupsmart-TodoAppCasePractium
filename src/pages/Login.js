@@ -8,7 +8,7 @@ function Login() {
           Hello Again!
         </h1>
         <h2 className="font-medium text-slate-700 text-opacity-80 mt-4">
-          Welcome back please enter <br /> your username!
+          Welcome to todo app please <br /> enter your username!
         </h2>
         <LoginForm />
       </div>

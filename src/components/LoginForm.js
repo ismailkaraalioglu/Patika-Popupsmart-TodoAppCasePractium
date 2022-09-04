@@ -8,17 +8,16 @@ function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleUserName = (e) => {
+  const handleLoginUser = (e) => {
     e.preventDefault();
     if (userName !== "") {
       dispatch(userLogin(userName));
-      localStorage.setItem("user", JSON.stringify(userName));
       navigate("/");
     }
   };
 
   return (
-    <form className="mt-10 w-80 mx-auto" onSubmit={handleUserName}>
+    <form className="mt-10 w-80 mx-auto" onSubmit={handleLoginUser}>
       <input
         className="rounded-xl p-4 w-full placeholder:font-medium placeholder:text-sm outline-none"
         placeholder="Enter username"
