@@ -22,7 +22,7 @@ function Todos() {
       <div className="w-full flex flex-col gap-y-1 mt-5">
         {loadingGetTodos === "loading" && <TodoListLoading />}
         {loadingGetTodos === "succeeded" &&
-          todos.map((todo, idx) => <Todo key={idx} todo={todo} />)}
+          todos.map((todo) => <Todo key={todo.id} todo={todo} />)}
       </div>
     </div>
   );

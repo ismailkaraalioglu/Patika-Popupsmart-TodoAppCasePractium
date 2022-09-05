@@ -4,17 +4,22 @@ import { BsCheck2, BsCheck2All } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 import { IoTrashBinOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
-import { editTodo, removeTodo } from "../redux/todos/services";
+import { completedTodo, removeTodo } from "../redux/todos/services";
+import { showEditTaskModal } from "../redux/event/eventSlice";
 
 function Todo({ todo }) {
   const dispatch = useDispatch();
 
   const handleIsCompleted = (todo) => {
-    dispatch(editTodo(todo));
+    dispatch(completedTodo(todo));
   };
 
   const handleTaskRemove = (todo) => {
     dispatch(removeTodo(todo));
+  };
+
+  const handleTaskEdit = (todo) => {
+    dispatch(showEditTaskModal(todo));
   };
 
   return (
@@ -40,7 +45,10 @@ function Todo({ todo }) {
       </div>
 
       <div className="flex items-center justify-center gap-x-4">
-        <div className="cursor-pointer hover:scale-110">
+        <div
+          className="cursor-pointer hover:scale-110"
+          onClick={() => handleTaskEdit(todo)}
+        >
           <FiEdit size={21} />
         </div>
         <div

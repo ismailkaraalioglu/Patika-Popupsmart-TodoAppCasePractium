@@ -19,17 +19,35 @@ export const addTodo = createAsyncThunk("todoapp/addTodo", async (task) => {
   return res.data;
 });
 
-export const editTodo = createAsyncThunk("todoapp/editTodo", async (task) => {
-  const res = await axios({
-    method: "put",
-    url: `${process.env.REACT_APP_API_BASE_ENDPOINT}/todos/${task.id}`,
-    data: {
-      ...task,
-      isCompleted: !task.isCompleted,
-    },
-  });
-  return res.data;
-});
+export const editTodo = createAsyncThunk(
+  "todoapp/editTodo",
+  async ({ value, task }) => {
+    const res = await axios({
+      method: "put",
+      url: `${process.env.REACT_APP_API_BASE_ENDPOINT}/todos/${task.id}`,
+      data: {
+        ...task,
+        content: value,
+      },
+    });
+    return res.data;
+  }
+);
+
+export const completedTodo = createAsyncThunk(
+  "todoapp/completedTodo",
+  async (task) => {
+    const res = await axios({
+      method: "put",
+      url: `${process.env.REACT_APP_API_BASE_ENDPOINT}/todos/${task.id}`,
+      data: {
+        ...task,
+        isCompleted: !task.isCompleted,
+      },
+    });
+    return res.data;
+  }
+);
 
 export const removeTodo = createAsyncThunk(
   "todoapp/removeTodo",
