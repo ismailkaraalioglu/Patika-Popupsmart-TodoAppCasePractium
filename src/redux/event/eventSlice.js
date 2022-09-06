@@ -5,7 +5,8 @@ export const eventSlice = createSlice({
   initialState: {
     darkMode: JSON.parse(localStorage.getItem("darkMode")) || false,
     editTaskModal: false,
-    editTaskContentValue: "",
+    editInputValue: "",
+    currentEditTask: null,
   },
   reducers: {
     changeDarkMode: (state, action) => {
@@ -14,10 +15,21 @@ export const eventSlice = createSlice({
     },
     showEditTaskModal: (state, action) => {
       state.editTaskModal = !state.editTaskModal;
+      if (state.editTaskModal) {
+        const currentTask = action.payload;
+        state.editInputValue = currentTask.content;
+        state.currentEditTask = currentTask;
+      } else {
+        state.editInputValue = "";
+      }
+    },
+    changeInputValue: (state, action) => {
+      state.editInputValue = action.payload;
     },
   },
 });
 
-export const { changeDarkMode, showEditTaskModal } = eventSlice.actions;
+export const { changeDarkMode, showEditTaskModal, changeInputValue } =
+  eventSlice.actions;
 
 export default eventSlice.reducer;
