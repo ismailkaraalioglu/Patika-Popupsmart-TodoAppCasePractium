@@ -11,7 +11,6 @@ export const eventSlice = createSlice({
   reducers: {
     changeDarkMode: (state, action) => {
       state.darkMode = !state.darkMode;
-      localStorage.setItem("darkMode", JSON.stringify(state.darkMode));
     },
     showEditTaskModal: (state, action) => {
       state.editTaskModal = !state.editTaskModal;

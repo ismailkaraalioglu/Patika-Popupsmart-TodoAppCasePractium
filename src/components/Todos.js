@@ -18,12 +18,17 @@ function Todos() {
 
   return (
     <div className="mt-10 w-1/2 mx-auto">
-      <h1 className="text-center font-bold text-xl">Todo List</h1>
-      <div className="w-full flex flex-col gap-y-1 mt-5">
-        {loadingGetTodos === "loading" && <TodoListLoading />}
-        {loadingGetTodos === "succeeded" &&
-          todos.map((todo) => <Todo key={todo.id} todo={todo} />)}
-      </div>
+      <h1 className="text-center font-bold text-xl dark:text-gray-300">
+        Todo List
+      </h1>
+      {loadingGetTodos === "loading" && <TodoListLoading />}
+      {loadingGetTodos === "succeeded" && (
+        <div className="w-full h-[450px] overflow-auto flex flex-col gap-y-1 mt-5">
+          {todos.map((todo) => (
+            <Todo key={todo.id} todo={todo} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

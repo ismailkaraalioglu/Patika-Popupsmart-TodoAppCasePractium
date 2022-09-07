@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { BsFillMoonStarsFill } from "react-icons/bs";
@@ -18,12 +19,21 @@ function Header() {
     navigate("/login");
   };
 
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+  }, [darkMode]);
+
   const handleDarkMode = () => {
     dispatch(changeDarkMode());
   };
 
   return (
-    <header className="w-full h-16 bg-white bg-opacity-40 shadow backdrop-blur-xl border border-white">
+    <header className="w-full h-16 bg-white dark:text-gray-300 dark:bg-zinc-800 bg-opacity-40 shadow backdrop-blur-xl border-b border-white dark:border-zinc-700">
       <div className="h-full max-w-7xl mx-auto flex items-center justify-between">
         <div className="font-bold text-xl italic">Popupsmart TodoApp</div>
 
@@ -45,7 +55,7 @@ function Header() {
             </button>
 
             <button
-              className="bg-red-300 px-8 py-3 text-sm font-bold rounded-lg hover:bg-red-400"
+              className="bg-red-400 dark:bg-red-600 px-8 py-3 text-sm font-bold rounded-lg hover:bg-red-500 dark:hover:bg-red-700"
               onClick={handleLogoutUser}
             >
               Logout

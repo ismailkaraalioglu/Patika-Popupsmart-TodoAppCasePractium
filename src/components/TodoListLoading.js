@@ -1,7 +1,13 @@
 import React from "react";
+import { ImSpinner9 } from "react-icons/im";
 
 function TodoListLoading() {
-  return <div>Todo List Loading</div>;
+  return (
+    <div className="w-full h-[450px] flex flex-col items-center justify-center dark:text-gray-300">
+      <ImSpinner9 size={30} className="animate-spin" />
+      <p className="mt-2 text-xl italic">Todo List Loading...</p>
+    </div>
+  );
 }
 
 export default TodoListLoading;

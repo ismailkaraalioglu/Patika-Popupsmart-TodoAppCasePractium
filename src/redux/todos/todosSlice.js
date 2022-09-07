@@ -24,6 +24,7 @@ export const todosSlice = createSlice({
     },
     [addTodo.fulfilled]: (state, action) => {
       state.todoItems.push(action.payload);
+      state.loadingAddTodo = "succeeded";
     },
     [completedTodo.fulfilled]: (state, action) => {
       const { id, isCompleted } = action.payload;
