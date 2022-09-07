@@ -15,23 +15,28 @@ function AddNewTask() {
 
   const handleNewTask = (e) => {
     e.preventDefault();
-    if (newTask === "" || newTask.length < 3) return;
-    toast.promise(
-      dispatch(addTodo(newTask)),
-      {
-        loading: "Saving...",
-        success: <b>Task saved!</b>,
-      },
-      {
+    if (newTask === "" || newTask.length < 3) {
+      toast.error("At least 3 characters are required.", {
         className: "dark:bg-zinc-500 dark:text-gray-300",
-      }
-    );
-    setNewTask("");
+      });
+    } else {
+      toast.promise(
+        dispatch(addTodo(newTask)),
+        {
+          loading: "Saving...",
+          success: <b>Task saved!</b>,
+        },
+        {
+          className: "dark:bg-zinc-500 dark:text-gray-300",
+        }
+      );
+      setNewTask("");
+    }
   };
 
   return (
     <form
-      className="w-1/2 mx-auto flex items-center justify-between"
+      className="md:w-1/2 w-full md:mx-auto flex items-center justify-between"
       onSubmit={handleNewTask}
     >
       <div

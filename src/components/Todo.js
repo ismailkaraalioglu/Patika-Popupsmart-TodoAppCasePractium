@@ -3,12 +3,16 @@ import classNames from "classnames";
 import { BsCheck2, BsCheck2All } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 import { IoTrashBinOutline } from "react-icons/io5";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { completedTodo, removeTodo } from "../redux/todos/services";
 import { showEditTaskModal } from "../redux/event/eventSlice";
 import toast from "react-hot-toast";
 
 function Todo({ todo }) {
+  const statusRemoveTodo = useSelector((state) => state.todos.statusRemoveTodo);
+  const statusCompletedTodo = useSelector(
+    (state) => state.todos.statusCompletedTodo
+  );
   const dispatch = useDispatch();
 
   const handleIsCompleted = (todo) => {
@@ -29,7 +33,7 @@ function Todo({ todo }) {
       dispatch(removeTodo(todo)),
       {
         loading: "Deleting...",
-        success: <b>Deleted!</b>,
+        success: <b>Task deleted!</b>,
       },
       {
         className: "dark:bg-zinc-500 dark:text-gray-300",
@@ -44,16 +48,17 @@ function Todo({ todo }) {
   return (
     <div className="flex items-center justify-between p-5 bg-white bg-opacity-40 dark:bg-opacity-20 shadow backdrop-blur-lg border border-white dark:border-zinc-400 rounded-xl dark:text-gray-100">
       <div className="flex items-center gap-x-4">
-        <div
+        <button
           className="cursor-pointer hover:scale-125"
           onClick={() => handleIsCompleted(todo)}
+          disabled={statusCompletedTodo === "loading"}
         >
           {todo.isCompleted ? (
             <BsCheck2All size={21} className="fill-green-500" />
           ) : (
             <BsCheck2 size={21} />
           )}
-        </div>
+        </button>
         <div
           className={classNames({
             "text-green-500 line-through": todo.isCompleted,
@@ -64,18 +69,19 @@ function Todo({ todo }) {
       </div>
 
       <div className="flex items-center justify-center gap-x-4">
-        <div
+        <button
           className="cursor-pointer hover:scale-110"
           onClick={() => handleTaskEdit(todo)}
         >
           <FiEdit size={21} />
-        </div>
-        <div
+        </button>
+        <button
           className="cursor-pointer hover:scale-110"
           onClick={() => handleTaskRemove(todo)}
+          disabled={statusRemoveTodo === "loading"}
         >
           <IoTrashBinOutline size={22} />
-        </div>
+        </button>
       </div>
     </div>
   );

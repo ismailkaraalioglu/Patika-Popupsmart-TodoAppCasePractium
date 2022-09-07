@@ -4,7 +4,7 @@ import Todos from "./Todos";
 
 function Main() {
   return (
-    <main className="mt-10">
+    <main className="md:mt-10 mt-7">
       <AddNewTask />
       <Todos />
       <EditModal />
