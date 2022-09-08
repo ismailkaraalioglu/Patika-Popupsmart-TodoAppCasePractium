@@ -1,6 +1,7 @@
 import AddNewTask from "./AddNewTask";
-import EditModal from "./EditModal";
 import Todos from "./Todos";
+import EditModal from "./EditModal";
+import ConfirmModal from "./ConfirmModal";
 
 function Main() {
   return (
@@ -8,6 +9,7 @@ function Main() {
       <AddNewTask />
       <Todos />
       <EditModal />
+      <ConfirmModal />
     </main>
   );
 }

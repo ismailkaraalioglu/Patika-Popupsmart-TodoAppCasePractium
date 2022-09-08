@@ -1,18 +1,21 @@
-import React from "react";
 import classNames from "classnames";
+import toast from "react-hot-toast";
 import { BsCheck2, BsCheck2All } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 import { IoTrashBinOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { completedTodo, removeTodo } from "../redux/todos/services";
-import { showEditTaskModal } from "../redux/event/eventSlice";
-import toast from "react-hot-toast";
+import { completedTodo } from "../redux/todos/services";
+import {
+  showEditTaskModal,
+  showConfirmDeleteModal,
+} from "../redux/event/eventSlice";
 
 function Todo({ todo }) {
   const statusRemoveTodo = useSelector((state) => state.todos.statusRemoveTodo);
   const statusCompletedTodo = useSelector(
     (state) => state.todos.statusCompletedTodo
   );
+
   const dispatch = useDispatch();
 
   const handleIsCompleted = (todo) => {
@@ -29,16 +32,7 @@ function Todo({ todo }) {
   };
 
   const handleTaskRemove = (todo) => {
-    toast.promise(
-      dispatch(removeTodo(todo)),
-      {
-        loading: "Deleting...",
-        success: <b>Task deleted!</b>,
-      },
-      {
-        className: "dark:bg-zinc-500 dark:text-gray-300",
-      }
-    );
+    dispatch(showConfirmDeleteModal(todo));
   };
 
   const handleTaskEdit = (todo) => {
