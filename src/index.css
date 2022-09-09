@@ -81,6 +81,9 @@
   .todosTitle {
     @apply text-center font-bold text-xl dark:text-gray-300;
   }
+  .todoListEmpty {
+    @apply text-center mt-10 w-full italic dark:text-gray-300;
+  }
   .todoListContent {
     @apply w-full flex flex-col gap-y-1 mt-5;
   }
@@ -166,7 +169,7 @@
     @apply relative my-6 mx-auto md:w-1/3 w-full;
   }
   .confirmModalPageBackground {
-    @apply opacity-25 fixed inset-0 z-40 bg-black
+    @apply opacity-25 fixed inset-0 z-40 bg-black;
   }
   .confirmModalContent {
     @apply border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-zinc-200 dark:bg-zinc-800 outline-none focus:outline-none;
@@ -187,6 +190,6 @@
     @apply bg-emerald-500 hover:bg-emerald-600 text-gray-200 active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow outline-none focus:outline-none mr-1 mb-1;
   }
   .confirmAlert {
-    @apply dark:bg-zinc-500 dark:text-gray-300
+    @apply dark:bg-zinc-500 dark:text-gray-300;
   }
 }

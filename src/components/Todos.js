@@ -22,7 +22,10 @@ function Todos() {
       <h1 className="todosTitle">Todo List</h1>
       {statusGetTodos === "failed" && <TodoListError />}
       {statusGetTodos === "loading" && <TodoListLoading />}
-      {statusGetTodos === "succeeded" && (
+      {todos.length === 0 && (
+        <div className="todoListEmpty">Please add tasks to be done...</div>
+      )}
+      {statusGetTodos === "succeeded" && todos.length !== 0 && (
         <div className="todoListContent">
           {todos.map((todo) => (
             <Todo key={todo.id} todo={todo} />
