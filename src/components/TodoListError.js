@@ -6,9 +6,9 @@ function TodoListError() {
   const isErrorGetTodos = useSelector((state) => state.todos.isErrorGetTodos);
 
   return (
-    <div className="w-full h-[200px] flex flex-col items-center justify-center dark:text-gray-300">
+    <div className="todoListErrorContainer">
       <BiMessageAltError size={35} />
-      <p className="text-xl italic">Todo List {isErrorGetTodos}</p>
+      <p className="todoListErrorTitle">Todo List {isErrorGetTodos}</p>
     </div>
   );
 }

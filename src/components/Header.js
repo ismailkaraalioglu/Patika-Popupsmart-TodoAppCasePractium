@@ -33,19 +33,19 @@ function Header() {
   };
 
   return (
-    <header className="w-full h-16 bg-white dark:text-gray-300 dark:bg-zinc-800 bg-opacity-40 shadow backdrop-blur-xl border-b border-white dark:border-zinc-700">
-      <div className="h-full max-w-7xl mx-auto flex items-center justify-between md:px-0 md:gap-x-0 px-2">
-        <div className="font-bold md:text-xl text-base italic">Popupsmart TodoApp</div>
+    <header className="headerContainer">
+      <div className="headerContent">
+        <div className="headerAppName">Popupsmart TodoApp</div>
 
-        <div className="flex items-center justify-center md:gap-x-10 gap-x-5">
-          <div className="font-semibold flex items-center gap-x-1.5 md:text-base text-sm">
+        <div className="headerUserEventContent">
+          <div className="headerUserContent">
             <FaUserCircle size={24} />
             <div>
-              Hi, <span className="font-bold">{user}</span>
+              Hi, <span className="headerUserName">{user}</span>
             </div>
           </div>
 
-          <div className="flex items-center justify-center gap-x-5 md:gap-x-6">
+          <div className="headerEventContent">
             <button onClick={handleDarkMode}>
               {darkMode ? (
                 <FiSun size={22} />
@@ -54,10 +54,7 @@ function Header() {
               )}
             </button>
 
-            <button
-              className="bg-red-400 dark:bg-red-600 px-3 md:px-8 py-3 md:py-3 text-sm font-bold rounded-lg hover:bg-red-500 dark:hover:bg-red-700"
-              onClick={handleLogoutUser}
-            >
+            <button className="headerLogoutButton" onClick={handleLogoutUser}>
               Logout
             </button>
           </div>

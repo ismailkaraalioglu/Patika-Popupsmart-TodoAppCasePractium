@@ -17,16 +17,14 @@ function LoginForm() {
   };
 
   return (
-    <form className="mt-10 w-80 mx-auto" onSubmit={handleLoginUser}>
+    <form className="loginPageFormContainer" onSubmit={handleLoginUser}>
       <input
-        className="rounded-xl p-4 w-full placeholder:font-medium placeholder:text-sm outline-none"
+        className="loginPageInput"
         placeholder="Enter username"
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
       />
-      <button className="w-full py-4 mt-7 bg-rose-500 bg-opacity-80 text-white rounded-xl hover:bg-opacity-100">
-        Login
-      </button>
+      <button className="loginPageLoginButton">Login</button>
     </form>
   );
 }

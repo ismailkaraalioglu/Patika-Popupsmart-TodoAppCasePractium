@@ -26,7 +26,7 @@ function Todo({ todo }) {
         success: <b>Completed changed!</b>,
       },
       {
-        className: "dark:bg-zinc-500 dark:text-gray-300",
+        className: "todoCompletedSuccessAlert",
       }
     );
   };
@@ -40,10 +40,10 @@ function Todo({ todo }) {
   };
 
   return (
-    <div className="flex items-center justify-between p-5 bg-white bg-opacity-40 dark:bg-opacity-20 shadow backdrop-blur-lg border border-white dark:border-zinc-400 rounded-xl dark:text-gray-100">
-      <div className="flex items-center gap-x-4">
+    <div className="todoContainer">
+      <div className="todoLeftSection">
         <button
-          className="cursor-pointer hover:scale-125"
+          className="todoCompletedButton"
           onClick={() => handleIsCompleted(todo)}
           disabled={statusCompletedTodo === "loading"}
         >
@@ -55,22 +55,19 @@ function Todo({ todo }) {
         </button>
         <div
           className={classNames({
-            "text-green-500 line-through": todo.isCompleted,
+            "todoContentCompleted": todo.isCompleted,
           })}
         >
           {todo.content}
         </div>
       </div>
 
-      <div className="flex items-center justify-center gap-x-4">
-        <button
-          className="cursor-pointer hover:scale-110"
-          onClick={() => handleTaskEdit(todo)}
-        >
+      <div className="todoRightSection">
+        <button className="todoEditButton" onClick={() => handleTaskEdit(todo)}>
           <FiEdit size={21} />
         </button>
         <button
-          className="cursor-pointer hover:scale-110"
+          className="todoRemoveButton"
           onClick={() => handleTaskRemove(todo)}
           disabled={statusRemoveTodo === "loading"}
         >

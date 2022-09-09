@@ -5,7 +5,7 @@ import ConfirmModal from "./ConfirmModal";
 
 function Main() {
   return (
-    <main className="md:mt-10 mt-7">
+    <main className="mainContainer">
       <AddNewTask />
       <Todos />
       <EditModal />

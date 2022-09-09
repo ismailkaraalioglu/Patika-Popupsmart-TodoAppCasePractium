@@ -18,14 +18,12 @@ function Todos() {
   }, [dispatch, statusGetTodos]);
 
   return (
-    <div className="md:mt-10 mt-7 md:w-1/2 w-full md:mx-auto">
-      <h1 className="text-center font-bold text-xl dark:text-gray-300">
-        Todo List
-      </h1>
+    <div className="todosContainer">
+      <h1 className="todosTitle">Todo List</h1>
       {statusGetTodos === "failed" && <TodoListError />}
       {statusGetTodos === "loading" && <TodoListLoading />}
       {statusGetTodos === "succeeded" && (
-        <div className="w-full flex flex-col gap-y-1 mt-5">
+        <div className="todoListContent">
           {todos.map((todo) => (
             <Todo key={todo.id} todo={todo} />
           ))}
