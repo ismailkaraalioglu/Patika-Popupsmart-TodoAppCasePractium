@@ -17,15 +17,18 @@ function Todos() {
     }
   }, [dispatch, statusGetTodos]);
 
+  const todosListEmpty = todos.length === 0 && statusGetTodos === "succeeded";
+  const todosListNotEmpty = todos.length !== 0 && statusGetTodos === "succeeded";
+
   return (
     <div className="todosContainer">
       <h1 className="todosTitle">Todo List</h1>
       {statusGetTodos === "failed" && <TodoListError />}
       {statusGetTodos === "loading" && <TodoListLoading />}
-      {todos.length === 0 && (
+      {todosListEmpty && (
         <div className="todoListEmpty">Please add tasks to be done...</div>
       )}
-      {statusGetTodos === "succeeded" && todos.length !== 0 && (
+      {todosListNotEmpty && (
         <div className="todoListContent">
           {todos.map((todo) => (
             <Todo key={todo.id} todo={todo} />
